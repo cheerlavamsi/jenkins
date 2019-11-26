@@ -1,5 +1,10 @@
 pipeline{
   agent any
+
+  environment {
+    AWS = credentials('AWS-DEV-KEYS')
+  }
+  
   stages {
 
     stage('clone repo') {
