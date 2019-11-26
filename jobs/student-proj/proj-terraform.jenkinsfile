@@ -4,7 +4,7 @@ pipeline{
   environment {
     AWS = credentials('AWS-DEV-KEYS')
   }
-  
+
   stages {
 
     stage('clone repo') {
@@ -17,6 +17,8 @@ pipeline{
     stage('run terraform code') {
       steps{
         sh '''
+            export AWS_ACCESS_KEY_ID="${AWS_USR}"
+            export AWS_SECRET_ACCESS_KEY="${AWS_PSW}"
             export AWS_DEFAULT_REGION="us-east-1"
             cd Project-01
             make dev-apply
