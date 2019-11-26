@@ -12,6 +12,7 @@ pipeline{
     stage('run terraform code') {
       steps{
         sh '''
+            cd Project-01
             make dev-apply
         '''
 
