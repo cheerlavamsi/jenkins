@@ -1,0 +1,23 @@
+pipeline{
+  agent any
+  stages {
+
+    stage('clone repo') {
+      steps{
+        git 'https://github.com/cheerlavamsi/terraform.git'
+            
+      }  
+    }  
+
+    stage('run terraform code') {
+      steps{
+        sh '''
+            make dev-apply
+        '''
+
+      }  
+    }
+
+
+  }
+}
