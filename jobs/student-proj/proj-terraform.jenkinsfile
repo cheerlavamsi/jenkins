@@ -21,7 +21,7 @@ pipeline{
             export AWS_SECRET_ACCESS_KEY="${AWS_PSW}"
             export AWS_DEFAULT_REGION="us-east-1"
             cd Project-01
-            make dev-apply
+            make ${ACTION}
         '''
 
       }  
