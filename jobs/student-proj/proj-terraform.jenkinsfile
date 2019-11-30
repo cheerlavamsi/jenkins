@@ -14,15 +14,15 @@ pipeline{
       }  
     }  
 
-    stage('run terraform code') {
+    stage('Run Terraform') {
       steps{
         ansiColor('xterm') {
           sh '''
-              export AWS_ACCESS_KEY_ID="${AWS_USR}"
-              export AWS_SECRET_ACCESS_KEY="${AWS_PSW}"
-              export AWS_DEFAULT_REGION="us-east-1"
-              cd Project-01
-              make ${ACTION}
+            export AWS_ACCESS_KEY_ID="${AWS_USR}"
+            export AWS_SECRET_ACCESS_KEY="${AWS_PSW}"
+            export AWS_DEFAULT_REGION="us-east-1"
+            cd Project-01
+            make ${ACTION}
         }  '''
 
       }  
