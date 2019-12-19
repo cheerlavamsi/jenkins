@@ -4,6 +4,7 @@ pipeline{
   environment {
     AWS           = credentials('AWS-DEV-KEYS')
     VAULT_PASS    = credentials("VAULT_PASS")
+    SSH = credentials('CENTOS-KEY')
   }
 
   stages {
@@ -24,7 +25,7 @@ pipeline{
             export AWS_DEFAULT_REGION="us-east-1"
             export VAULT_PASS=${VAULT_PASS}
             cd Project-01
-            make ${ACTION}
+            make ${ACTION} ${SSH_USR} ${SSH}
           '''
         }
 
