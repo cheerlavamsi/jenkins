@@ -7,7 +7,7 @@ pipeline{
     
     stage('Clone Repo') {
       steps {
-        git credentialsId: 'git', url: 'https://github.com/cheerlavamsi/studentapp-ui.git'
+        git credentialsId: 'git', url: 'https://github.com/cheerlavamsi/studentapp-documents.git'
       }
     }
     
