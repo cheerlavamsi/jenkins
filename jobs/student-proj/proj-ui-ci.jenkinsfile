@@ -23,8 +23,9 @@ pipeline{
       steps {
         withSonarQubeEnv('SonarQubeServer') {
           sh '''
-          mvn sonar:sonar  -Dsonar.host.url=https://sonarcloud.io   -Dsonar.login=${SONAR_TOKEN}
-        '''
+          mvn sonar:sonar  -Dsonar.host.url=https://sonarcloud.io  
+          
+          '''
         }
       }
     }
