@@ -21,14 +21,12 @@ pipeline{
 
     stage('Quality Check') {
       steps {
-        
-          sh '''
+        sh '''
           mvn sonar:sonar \
           -Dsonar.projectKey=student-ui \
           -Dsonar.host.url=http://52.91.73.205:9000 \
           -Dsonar.login=0f509076f0b68e8e251cc4b956ea76f2f29b275c
         '''
-   
       }
     }
 
