@@ -61,7 +61,7 @@ pipeline{
       }
       steps {
         sh '''
-          env
+          cat builds/$BUILD_NUMBER/log
         '''
       }
     }
