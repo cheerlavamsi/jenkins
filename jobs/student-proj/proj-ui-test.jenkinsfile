@@ -1,16 +1,16 @@
 pipeline {
-  agnet any
+  agent any
 
-    stages {
+  stages {
 
-        stage('Sample') {
-            steps {
-                sh '''
-                    echo Hello
-                '''  
-
-            }  
-        }
-
+    stage('Sample') {
+      steps {
+        sh '''
+          echo Hello
+        '''    
+      }    
     }
+
+  }
+
 }
