@@ -1,0 +1,19 @@
+pipeline {
+  agent any 
+
+  stages {
+
+    stage('Ci-Pipeline') {
+      steps {
+        build 'Ci-PipeLine'
+      }
+    }
+
+    stage('TEST-Pipeline') {
+      steps {
+        build 'TEST-Pipeline'
+      }
+    }
+
+  }
+}
