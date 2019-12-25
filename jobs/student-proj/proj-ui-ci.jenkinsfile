@@ -40,6 +40,13 @@ pipeline{
       }
     }
 
+    stage("Upload Artifacts") {
+      steps{
+        sh  '''
+          mvn package deploy
+        '''
+      }
+    }
 
    
   }
