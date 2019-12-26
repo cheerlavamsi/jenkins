@@ -64,7 +64,7 @@ pipeline{
          cd /var/lib/jenkins/jobs/studentapp-project/jobs/Ci-PipeLine/builds/$BUILD_NUMBER
          SNAP_VERSION=$(grep Uploaded log | head -1  |xargs -n1 | grep ^http | awk -F / '{print $9}')
          NEXUS_VERSION=$(grep Uploaded log | head -1  |xargs -n1 | grep ^http | awk -F / '{print $NF}' | sed -e 's/\\*\\*\\*\\*app-//' | sed -e 's/.war//')
-         echo "http://54.91.247.220:8081/repository/studentapp-snapshots/com/jdevs/studentapp/$SNAP_VERSION/studentapp-$NEXUS_VERSION.war" >/tmp/out
+         echo "http://54.91.247.220:8081/repository/studentapp-snapshots/com/jdevs/studentapp/$SNAP_VERSION/studentapp-$NEXUS_VERSION.war" >/tmp/out1
   
         '''
       }
