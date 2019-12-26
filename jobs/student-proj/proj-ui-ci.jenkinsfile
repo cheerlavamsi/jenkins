@@ -31,8 +31,8 @@ pipeline{
         sh '''
           mvn sonar:sonar \
           -Dsonar.projectKey=student-ui \
-          -Dsonar.host.url=http://54.81.146.159:9000 \
-          -Dsonar.login=895585d7148a6f44fe251d89032d952465b038f3
+          -Dsonar.host.url=http://3.91.229.237:9000 \
+          -Dsonar.login=4b103167279abe467967eecd6a26bcfcfa8040e7
         '''
         }
       }
