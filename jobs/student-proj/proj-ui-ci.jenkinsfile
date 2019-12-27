@@ -31,8 +31,8 @@ pipeline{
         sh '''
           mvn sonar:sonar \
           -Dsonar.projectKey=student-ui \
-          -Dsonar.host.url=http://3.91.229.237:9000 \
-          -Dsonar.login=4b103167279abe467967eecd6a26bcfcfa8040e7
+          -Dsonar.host.url=http://54.162.72.66:9000 \
+          -Dsonar.login=8f23b98475acb62815f0b22fbae157e3542c9fc9
         '''
         }
       }
@@ -64,7 +64,7 @@ pipeline{
          cd /var/lib/jenkins/jobs/studentapp-project/jobs/Ci-PipeLine/builds/$BUILD_NUMBER
          SNAP_VERSION=$(grep Uploaded log | head -1  |xargs -n1 | grep ^http | awk -F / '{print $9}')
          NEXUS_VERSION=$(grep Uploaded log | head -1  |xargs -n1 | grep ^http | awk -F / '{print $NF}' | sed -e 's/\\*\\*\\*\\*app-//' | sed -e 's/.war//')
-         echo "http://54.91.247.220:8081/repository/studentapp-snapshots/com/jdevs/studentapp/$SNAP_VERSION/studentapp-$NEXUS_VERSION.war" >/tmp/out1
+         echo "http://54.197.105.88:8081/repository/studentapp-snapshots/com/jdevs/studentapp/$SNAP_VERSION/studentapp-$NEXUS_VERSION.war" >/tmp/out1
   
         '''
       }
