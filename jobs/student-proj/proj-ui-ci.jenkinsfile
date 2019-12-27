@@ -49,27 +49,21 @@ pipeline{
     stage("Upload Artifacts") {
       steps{
         sh  '''
-          mvn -s settings.xml package deploy  -DNEXUS_USR=${NEXUS_USR} -DNEXUS_PSW=${NEXUS_PSW}
+          mvn -s settings.xml package deploy  -DNEXUS_USR=${NEXUS_USR} -DNEXUS_PSW=${NEXUS_PSW} | tee output
+          cat output | grep ^Upload | grep war  | awk '{print $NF}' >url.txt 
          
         '''
       }
     }
 
-    stage('Get URL') {
-      agent {
-        label "MASTER"
-      }
-      steps {
-        sh '''
-         cd /var/lib/jenkins/jobs/studentapp-project/jobs/Ci-PipeLine/builds/$BUILD_NUMBER
-         SNAP_VERSION=$(grep Uploaded log | head -1  |xargs -n1 | grep ^http | awk -F / '{print $9}')
-         NEXUS_VERSION=$(grep Uploaded log | head -1  |xargs -n1 | grep ^http | awk -F / '{print $NF}' | sed -e 's/\\*\\*\\*\\*app-//' | sed -e 's/.war//')
-         echo "http://54.197.105.88:8081/repository/studentapp-snapshots/com/jdevs/studentapp/$SNAP_VERSION/studentapp-$NEXUS_VERSION.war" >/tmp/out1
-  
-        '''
-      }
-    }
-
-   
+       
   }
+
+  post {
+    success {
+      archiveArtifacts artifacts: 'url.txt', fingerprint: true
+    }
+  }
+
+
 }
