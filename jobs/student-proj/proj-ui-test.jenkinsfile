@@ -36,15 +36,9 @@ pipeline {
     stage('Deploy New Artifact to Test ENV') {
       steps {
         git credentialsId: 'git', url: 'https://github.com/cheerlavamsi/ansible.git'
-        script {
-          step ([$class: 'CopyArtifact',
-          projectName: 'Ci-PipeLine',
-          filter: "url.txt"]);
-        }
-
+        
         sh '''
-          URL=$(cat url.txt)
-          ansible-playbook -i /tmp/hosts Projects/Studentapp/deploy.yml -e URL=$URL -e NEXUS_USR=$NEXUS_USR -e NEXUS_PSW=$NEXUS_PSW
+          ansible-playbook -i /tmp/hosts Projects/Studentapp/deploy.yml
         '''
                 
       }
