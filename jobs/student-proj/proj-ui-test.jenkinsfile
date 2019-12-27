@@ -46,7 +46,7 @@ pipeline {
           URL=$(cat url.txt)
           ansible-playbook -i /tmp/hosts Projects/Studentapp/deploy.yml -e URL=$URL -e NEXUS_USR=$NEXUS_USR -e NEXUS_PSW=$NEXUS_PSW
         '''
-        }
+        
         
       }
     }
