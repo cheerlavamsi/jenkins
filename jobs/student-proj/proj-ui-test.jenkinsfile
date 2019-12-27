@@ -1,7 +1,5 @@
 pipeline {
-  agent {
-    label 'workstation'
-  }
+  agent any
 
   environment {
     AWS = credentials('AWS-DEV-KEYS')
