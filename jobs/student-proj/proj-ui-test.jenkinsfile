@@ -25,7 +25,7 @@ pipeline {
             export AWS_DEFAULT_REGION="us-east-1"
             export VAULT_PASS=${VAULT_PASS}
             cd Project-01
-            make test-apply ${SSH_USR} ${SSH}
+            make test-destroy ${SSH_USR} ${SSH}
           '''
         }
       }
