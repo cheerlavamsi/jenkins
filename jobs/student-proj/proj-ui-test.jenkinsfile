@@ -39,7 +39,7 @@ pipeline {
        
         sh '''
           
-          ansible-playbook -i /tmp/hosts Projects/Studentapp/deploy.yml
+          ansible-playbook -i /tmp/hosts Projects/Studentapp/deploy.yml --extra-vars "ansible_user=root ansible_password=DevOps321"
         '''
       }
     }
