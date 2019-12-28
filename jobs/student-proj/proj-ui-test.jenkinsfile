@@ -32,6 +32,18 @@ pipeline {
         }
       }
     }
+
+    stage('Deploy New Artifact to Test ENV') {
+      steps {
+        git credentialsId: 'git', url: 'https://github.com/cheerlavamsi/ansible.git'
+       
+        sh '''
+          
+          ansible-playbook -i /tmp/hosts Projects/Studentapp/deploy.yml
+        '''
+      }
+    }
+
        
   }
 
