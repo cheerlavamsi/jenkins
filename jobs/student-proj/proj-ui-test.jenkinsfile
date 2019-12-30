@@ -48,6 +48,18 @@ pipeline {
       }
     }
 
+    stage('Selenium Testing') {
+      steps{
+        git credentialsId: 'git', url: 'https://github.com/cheerlavamsi/Selenium.git'
+        sh '''
+          HOST=$(cat /tmp/hosts)
+          sed -i -e "s/IPADDRESS/${HOST}/"  src/test/java/framework/CrudStudent.java
+          mvn clean install "-Dremote=true" "-DseleniumGridURL=54.210.187.117:4444/wd/hub" "-Dbrowser=Chrome" "-Doverwrite.binaries=true"
+        '''
+      }
+    }
+
+
 
        
   }
