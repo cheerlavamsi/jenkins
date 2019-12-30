@@ -70,7 +70,7 @@ pipelineJob('studentapp-project/APP-MANUAL-RELEASE') {
           }
         }
       }
-      'scriptPath'('jobs/student-proj/proj-ui-manual-release.Jenkinsfile')
+      'scriptPath'('jobs/student-proj/proj-ui-manual-release.jenkinsfile')
       'lightweight'(true)
     }
   }
