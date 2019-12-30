@@ -60,7 +60,7 @@ pipelineJob('studentapp-project/APP-MANUAL-RELEASE') {
         'userRemoteConfigs' {
           'hudson.plugins.git.UserRemoteConfig' {
             'url'('https://github.com/cheerlavamsi/jenkins.git')
-            'credentialsId'('git')
+           
           }
         }
 
