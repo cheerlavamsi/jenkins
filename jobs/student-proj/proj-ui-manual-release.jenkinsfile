@@ -1,0 +1,23 @@
+pipeline {
+  agent {
+    label 'workstation'
+  }
+
+  environment {
+    NEXUS = credentials('NEXUS')
+  }
+
+  stages {
+
+    stage('RELEASE A VERSION') {
+      steps {
+        git credentialsId: 'git', url: 'https://github.com/cheerlavamsi/studentapp-documents.git'
+        sh '''
+          mvn versions:set -DnewVersion=${RELEASE_VERSION}-RELEASE
+          mvn -s settings.xml package deploy -DNEXUS_USR=${NEXUS_USR} -DNEXUS_PSW=${NEXUS_PSW}
+        '''
+      }
+    }
+  }
+
+}
