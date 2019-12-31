@@ -1,0 +1,46 @@
+pipeline {
+  agent {
+    label 'MAVEN'
+  } 
+
+  environment {
+    AWS = credentials('AWS-PROD-KEYS')
+    VAULT_PASS = credentials('VAULT_PASS')
+    SSH = credentials('CENTOS-KEY')
+  }
+
+  
+  stages {
+
+    stage('Clone Repo') {
+      steps {
+        git credentialsId: 'git', url: 'https://github.com/cheerlavamsi/terraform.git'
+      }
+    }
+
+    stage('Run Terraform') {
+      steps {
+        ansiColor('xterm') { 
+          sh '''
+            export AWS_ACCESS_KEY_ID="${AWS_USR}"
+            export AWS_SECRET_ACCESS_KEY="${AWS_PSW}"
+            export AWS_DEFAULT_REGION="us-east-1"
+            export VAULT_PASS=${VAULT_PASS}
+            cd Project-01
+            make prod-apply
+          '''
+        }
+      }
+    }
+
+    
+
+  }
+
+  post { 
+    always { 
+      cleanWs()
+    }
+  }
+
+}
