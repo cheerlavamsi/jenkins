@@ -27,7 +27,7 @@ pipeline {
             export AWS_DEFAULT_REGION="us-east-1"
             export VAULT_PASS=${VAULT_PASS}
             cd Project-01
-            make prod-destroy
+            make prod-apply
           '''
         }
       }
