@@ -54,7 +54,7 @@ pipeline {
         sh '''
           HOST=$(cat /tmp/hosts)
           sed -i -e "s/IPADDRESS/${HOST}/"  src/test/java/framework/CrudStudent.java
-          mvn clean install "-Dremote=true" "-DseleniumGridURL=http://35.175.208.181:4444/wd/hub" "-Dbrowser=Chrome" "-Doverwrite.binaries=true"
+          mvn clean install "-Dremote=true" "-DseleniumGridURL=http://3.87.106.55:4444/wd/hub" "-Dbrowser=Chrome" "-Doverwrite.binaries=true"
         '''
       }
     }
