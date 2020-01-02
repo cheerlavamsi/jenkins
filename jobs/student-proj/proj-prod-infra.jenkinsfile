@@ -46,7 +46,7 @@ pipeline {
             export AWS_DEFAULT_REGION="us-east-1"
             export VAULT_PASS=${VAULT_PASS}
             cd Project-01
-            make r53-apply
+            make r53-destroy
           '''
         }
       }
