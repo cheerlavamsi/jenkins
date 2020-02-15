@@ -25,26 +25,26 @@ pipeline{
       }
     }
 
-    // stage('Quality Check') {
-    //   steps {
-    //     withSonarQubeEnv('SonarQubeServer') {
-    //     sh '''
-    //       mvn sonar:sonar \
-    //       -Dsonar.projectKey=student-ui \
-    //       -Dsonar.host.url=http://54.162.72.66:9000 \
-    //       -Dsonar.login=8f23b98475acb62815f0b22fbae157e3542c9fc9
-    //     '''
-    //     }
-    //   }
-    // }
+    stage('Quality Check') {
+      steps {
+        withSonarQubeEnv('SonarQubeServer') {
+        sh '''
+          mvn sonar:sonar \
+          -Dsonar.projectKey=student-ui \
+          -Dsonar.host.url=http://52.91.237.88:9000 \
+          -Dsonar.login=8f23b98475acb62815f0b22fbae157e3542c9fc9
+        '''
+        }
+      }
+    }
 
-    // stage("Quality Gate") {
-    //   steps {
-    //     timeout(time: 1, unit: 'HOURS') {
-    //       waitForQualityGate abortPipeline: true
-    //     }
-    //   }
-    // }
+    stage("Quality Gate") {
+      steps {
+        timeout(time: 1, unit: 'HOURS') {
+          waitForQualityGate abortPipeline: true
+        }
+      }
+    }
 
     stage("Upload Artifacts") {
       steps{
